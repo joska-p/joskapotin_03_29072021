@@ -1,0 +1,121 @@
+.page-post {
+  .main-content {
+    position: relative;
+    padding-top: 210px;
+
+    @media (min-width: $image-width-max) and (max-width: $large) {
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: $site-gap;
+        background: $grey-dark;
+        content: "";
+      }
+    }
+
+    @media (min-width: $xlarge) {
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: $site-gap;
+        background: $grey-dark;
+        content: "";
+      }
+    }
+  }
+
+  .section-post {
+    @include box-shadow;
+
+    position: relative;
+    max-width: $image-width-max;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 $site-gap 0;
+    border-top-left-radius: 37px;
+    border-top-right-radius: 37px;
+    background: $white;
+    overflow: hidden;
+    z-index: 10;
+
+    @media (min-width: $image-width-max) and (max-width: $large) {
+      border-bottom-left-radius: 37px;
+      border-bottom-right-radius: 37px;
+    }
+
+    @media (min-width: $large) {
+      max-width: $xlarge;
+    }
+
+    @media (min-width: $xlarge) {
+      border-bottom-left-radius: 37px;
+      border-bottom-right-radius: 37px;
+    }
+  }
+
+  .post__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .post__img {
+    height: 257px;
+    border-radius: 0;
+  }
+
+  .post__header {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-top: 30px;
+    background: $white;
+    z-index: 10;
+
+    @media (min-width: $large) {
+      justify-content: center;
+
+      .btn-like {
+        margin-left: $site-gap*2;
+      }
+    }
+  }
+
+  .post__title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .btn-like {
+    margin: 0 0 10px $site-gap;
+  }
+
+  .post__form {
+    display: grid;
+    margin-top: 30px;
+    padding-bottom: 55px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $site-gap*3;
+
+    @media (min-width: $large) {
+      justify-content: space-between;
+      grid-template-columns: repeat(3, minmax(0, 400px));
+    }
+
+    .btn {
+      margin: auto;
+
+      @media (min-width: $large) {
+        grid-column: 2/3;
+      }
+    }
+  }
+}

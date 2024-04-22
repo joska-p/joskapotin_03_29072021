@@ -1,0 +1,116 @@
+.operations {
+  display: grid;
+  justify-content: center;
+  padding: 50px $site-gap 70px;
+  grid-template-columns: minmax(0, $image-width-max);
+
+  @media (min-width: $medium) {
+    grid-template-columns: minmax(0, $image-width-max*2 + $site-gap*2);
+  }
+
+  .section-title {
+    @media (min-width: $small) {
+      text-align: center;
+    }
+
+    @media (min-width: $medium) {
+      margin-bottom: $site-gap*2;
+    }
+  }
+}
+
+.operations__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  counter-reset: operations-counter;
+  gap: $site-gap;
+
+  @media (min-width: $medium) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $site-gap*2;
+  }
+
+  .operation {
+    @include box-shadow;
+
+    display: flex;
+    position: relative;
+    flex-grow: 1;
+    align-items: center;
+    margin-left: 12px;
+    padding-top: 25px;
+    padding-right: 33px;
+    padding-bottom: 25px;
+    border-radius: 50vh;
+    background: $grey-lighter;
+    z-index: 10;
+    counter-increment: operations-counter;
+
+    &::before {
+      position: absolute;
+      left: -12px;
+      width: 24px;
+      height: 24px;
+      border-radius: 24px;
+      background: $color-primary;
+      color: $white;
+      font-size: 1.4rem;
+      line-height: 25px;
+      text-align: center;
+      content: counter(operations-counter);
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: opacity ease-in-out 200ms;
+      border-radius: inherit;
+      background: lighten($color-primary, 36);
+      opacity: 0;
+      content: "";
+      z-index: -1;
+    }
+
+    .operation__text {
+      font-weight: bolder;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &::before {
+        @include icon;
+
+        margin: 0 33px 0 27px;
+        color: $grey;
+      }
+    }
+
+    &:hover {
+      .operation__text::before {
+        color: $color-primary;
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:nth-of-type(1) .operation__text::before {
+      content: "\f3cd";
+    }
+
+    &:nth-of-type(2) .operation__text::before {
+      content: "\f03a";
+    }
+
+    &:nth-of-type(3) .operation__text::before {
+      content: "\f54e";
+    }
+  }
+}

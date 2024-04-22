@@ -1,0 +1,36 @@
+.site-header {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  min-height: 63px;
+  padding: 0 $site-gap;
+  grid-template-columns: minmax(0, $image-width-max);
+  grid-template-areas: "site-header";
+
+  .logo {
+    margin: 0;
+    color: $color-logo;
+    font-family: $font-heading;
+    font-size: 3rem;
+    grid-area: site-header;
+    justify-self: center;
+  }
+
+  nav {
+    grid-area: site-header;
+    justify-self: start;
+
+    a {
+      padding: 1em 1em 1em 0;
+      border: 0;
+      color: $grey-dark;
+      font-size: 1.6rem;
+
+      &::before {
+        @include icon;
+
+        content: "\f060";
+      }
+    }
+  }
+}

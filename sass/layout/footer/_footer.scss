@@ -1,0 +1,65 @@
+.site-footer {
+  display: grid;
+  justify-content: center;
+  padding: 25px $site-gap 35px;
+  grid-template-columns: minmax(0, $large);
+  background: $grey-dark;
+  color: $white;
+
+  .heading {
+    @media (min-width: $small) {
+      text-align: center;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @media (min-width: $small) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      column-gap: 30px;
+    }
+  }
+
+  li {
+    margin-top: 2px;
+
+    a {
+      border-color: transparent;
+      color: $white;
+
+      &:focus {
+        color: $color-link--hover;
+      }
+
+      &:hover {
+        border-color: currentColor;
+        color: currentColor;
+      }
+
+      &:active {
+        color: $color-link--hover;
+      }
+    }
+
+    &::before {
+      margin-right: 15px;
+    }
+
+    &:nth-of-type(1)::before {
+      @include icon;
+
+      content: "\f2e7";
+    }
+
+    &:nth-of-type(2)::before {
+      @include icon;
+
+      content: "\f4c4";
+    }
+  }
+}
